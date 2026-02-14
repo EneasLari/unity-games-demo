@@ -15,13 +15,13 @@
           <p id="desc"></p>
         </div>
         <div class="spacer"></div>
-        <a id="openNewTab" class="pill" href="#" target="_blank" rel="noopener">Open in new tab</a>
+        <button id="fullscreenBtn" class="pill btn-pill" type="button">Fullscreen</button>
       </div>
     </header>
 
     <main class="wrap">
       <div class="player-shell">
-        <iframe id="frame" class="player" src="" allowfullscreen></iframe>
+        <iframe id="frame" class="player" src="" allow="fullscreen" allowfullscreen></iframe>
       </div>
       <p class="hint">Tip: If the game doesn’t load, rebuild WebGL with <b>Compression Format: Disabled</b>.</p>
     </main>

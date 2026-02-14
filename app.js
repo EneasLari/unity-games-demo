@@ -68,7 +68,7 @@ async function initPlay() {
     const gameId = qs("game");
     const title = document.getElementById("title");
     const desc = document.getElementById("desc");
-    const openNewTab = document.getElementById("openNewTab");
+    const fullscreenBtn = document.getElementById("fullscreenBtn");
 
     const games = await loadGames();
     const g = games.find(x => x.id === gameId) || games[0];
@@ -83,7 +83,31 @@ async function initPlay() {
     if (desc) desc.textContent = g.description || "";
     frame.src = directUrl;
 
-    if (openNewTab) openNewTab.href = directUrl;
+
+    if (fullscreenBtn) {
+        const canFullscreen = !!document.fullscreenEnabled && typeof frame.requestFullscreen === "function";
+        fullscreenBtn.disabled = !canFullscreen;
+
+        const syncLabel = () => {
+            const isFs = !!document.fullscreenElement;
+            fullscreenBtn.textContent = isFs ? "Exit Fullscreen" : "Fullscreen";
+        };
+
+        syncLabel();
+        document.addEventListener("fullscreenchange", syncLabel);
+
+        fullscreenBtn.addEventListener("click", async () => {
+            try {
+                if (document.fullscreenElement) {
+                    await document.exitFullscreen();
+                } else {
+                    await frame.requestFullscreen();
+                }
+            } catch (e) {
+                console.warn("Fullscreen request failed", e);
+            }
+        });
+    }
 }
 
 (async function boot() {

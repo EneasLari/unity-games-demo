@@ -3,7 +3,7 @@
     "id": "sudoku",
     "title": "Sudoku",
     "description": "Classic Sudoku with clean UI and difficulty selection.",
-    "thumb": "games/sudoku/TemplateData/thumbnail.png",
+    "thumb": "games/thumbnails/sudoku.png",
     "tags": ["Puzzle", "Logic"]
   }
 ]

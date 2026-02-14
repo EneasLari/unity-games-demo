@@ -202,6 +202,14 @@ p {
   background: rgba(255, 255, 255, 0.06);
   font-size: 13px;
 }
+.btn-pill {
+  cursor: pointer;
+  font: inherit;
+}
+.btn-pill:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 .playtitle h1 {
   font-size: 18px;
 }
