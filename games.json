@@ -5,12 +5,5 @@
     "description": "Classic Sudoku with clean UI and difficulty selection.",
     "thumb": "games/sudoku/TemplateData/thumbnail.png",
     "tags": ["Puzzle", "Logic"]
-  },
-  {
-    "id": "my-first-game",
-    "title": "My First Game",
-    "description": "A small prototype with simple mechanics.",
-    "thumb": "assets/default-thumb.png",
-    "tags": ["Prototype"]
   }
 ]
