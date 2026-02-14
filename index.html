@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>My Unity Games</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap">
+        <div class="brand">
+          <div class="logo">▶</div>
+          <div>
+            <h1>My Unity Games</h1>
+            <p>Pick a game and play instantly.</p>
+          </div>
+        </div>
+
+        <div class="tools">
+          <input id="search" class="search" placeholder="Search games…" autocomplete="off" />
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="grid" id="grid"></section>
+
+      <section class="footer-card">
+        <h2>How to add a new game</h2>
+        <ol>
+          <li>Build WebGL in Unity (Compression: <b>Disabled</b>).</li>
+          <li>Upload the build folder to <code>games/&lt;id&gt;/</code>.</li>
+          <li>Add one entry to <code>games.json</code>.</li>
+        </ol>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

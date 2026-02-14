@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Play</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap playbar">
+        <a class="back" href="./">← Library</a>
+        <div class="playtitle">
+          <h1 id="title">Loading…</h1>
+          <p id="desc"></p>
+        </div>
+        <div class="spacer"></div>
+        <a id="openNewTab" class="pill" href="#" target="_blank" rel="noopener">Open in new tab</a>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="player-shell">
+        <iframe id="frame" class="player" src="" allowfullscreen></iframe>
+      </div>
+      <p class="hint">Tip: If the game doesn’t load, rebuild WebGL with <b>Compression Format: Disabled</b>.</p>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
