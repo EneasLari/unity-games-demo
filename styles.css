@@ -209,7 +209,7 @@ p {
 }
 
 .cardbody {
-  padding: 14px;
+  padding: 18px;
 }
 
 .title {
@@ -344,6 +344,24 @@ code {
   padding: 2px 6px;
   border-radius: 8px;
   border: 1px solid var(--line);
+}
+
+/* ----------------------------
+   Better Vertical Spacing
+---------------------------- */
+
+/* More space between hero, counter, grid */
+.hero {
+  margin: 40px 0 24px;
+}
+
+.game-count {
+  margin: 0 0 18px;
+}
+
+/* More space before footer */
+.site-footer {
+  margin-top: 60px;
 }
 
 /* ----------------------------

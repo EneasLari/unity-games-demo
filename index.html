@@ -35,6 +35,35 @@
       <p class="game-count" id="gameCount"></p>
 
       <section class="grid" id="grid"></section>
+
+      <footer class="site-footer">
+        <div class="wrap footer-inner">
+          <div class="footer-left">
+            <div class="footer-logo">🎮</div>
+            <div class="footer-text">
+              <div class="footer-title">My Unity Games</div>
+              <div class="footer-sub">Small WebGL builds • Big vibes</div>
+            </div>
+          </div>
+
+          <div class="footer-right">
+            <a class="footer-link" href="./">Library</a>
+            <a class="footer-link" href="https://github.com/EneasLari/unity-games-demo" target="_blank" rel="noopener">GitHub</a>
+            <a class="footer-link" href="#grid">Games</a>
+          </div>
+        </div>
+
+        <div class="wrap footer-bottom">
+          <span id="footerYear"></span>
+          <span class="dot">•</span>
+          <span class="muted">Built with Unity WebGL + GitHub Pages</span>
+        </div>
+      </footer>
+
+      <script>
+        // tiny footer sugar (no dependency)
+        document.getElementById('footerYear').textContent = `© ${new Date().getFullYear()} My Unity Games`
+      </script>
     </main>
 
     <script src="app.js"></script>
