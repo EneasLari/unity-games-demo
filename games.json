@@ -5,5 +5,26 @@
     "description": "Classic Sudoku with clean UI and difficulty selection.",
     "thumb": "games/thumbnails/sudoku.png",
     "tags": ["Puzzle", "Logic"]
+  },
+  {
+    "id": "sudoku2",
+    "title": "Sudoku",
+    "description": "Classic Sudoku with clean UI and difficulty selection.",
+    "thumb": "games/thumbnails/sudoku.png",
+    "tags": ["Puzzle", "Logic"]
+  },
+  {
+    "id": "sudoku3",
+    "title": "Sudoku",
+    "description": "Classic Sudoku with clean UI and difficulty selection.",
+    "thumb": "games/thumbnails/sudoku.png",
+    "tags": ["Puzzle", "Logic"]
+  },
+  {
+    "id": "sudoku",
+    "title": "Sudoku",
+    "description": "Classic Sudoku with clean UI and difficulty selection.",
+    "thumb": "games/thumbnails/sudoku.png",
+    "tags": ["Puzzle", "Logic"]
   }
 ]

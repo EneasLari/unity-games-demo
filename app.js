@@ -9,14 +9,17 @@ function qs(name) {
     return p.get(name);
 }
 
-function makeCard(g) {
+function makeCard(g, i = 0) {
     const playUrl = `play.html?game=${encodeURIComponent(g.id)}`;
     const directUrl = `games/${g.id}/index.html`;
 
     const tags = (g.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
+    const badge = g.new ? `<span class="badge">NEW</span>` : "";
+    const delay = `${Math.min(i, 12) * 0.05}s`; // clamp so it doesn’t get silly with many games
 
     return `
-    <article class="card">
+    <article class="card" style="--delay:${delay}">
+      ${badge}
       <img class="thumb" src="${g.thumb || "assets/default-thumb.png"}" alt="">
       <div class="cardbody">
         <h3 class="title">${escapeHtml(g.title || g.id)}</h3>
@@ -43,18 +46,25 @@ function escapeHtml(s) {
 async function initIndex() {
     const grid = document.getElementById("grid");
     const search = document.getElementById("search");
+    const countEl = document.getElementById("gameCount");
     if (!grid) return;
 
     const games = await loadGames();
 
     function render(filterText = "") {
         const f = filterText.trim().toLowerCase();
-        const filtered = !f ? games : games.filter(g => {
-            const hay = `${g.id} ${g.title} ${g.description} ${(g.tags || []).join(" ")}`.toLowerCase();
-            return hay.includes(f);
-        });
+        const filtered = !f
+            ? games
+            : games.filter(g => {
+                const hay = `${g.id} ${g.title} ${g.description} ${(g.tags || []).join(" ")}`.toLowerCase();
+                return hay.includes(f);
+            });
 
-        grid.innerHTML = filtered.map(makeCard).join("") || `<p>No games found.</p>`;
+        if (countEl) {
+            countEl.textContent = `${filtered.length} game${filtered.length !== 1 ? "s" : ""} available`;
+        }
+
+        grid.innerHTML = filtered.map((g, i) => makeCard(g, i)).join("") || `<p>No games found.</p>`;
     }
 
     render();
@@ -82,6 +92,37 @@ async function initPlay() {
     if (title) title.textContent = g.title || g.id;
     if (desc) desc.textContent = g.description || "";
     frame.src = directUrl;
+    // Hide Unity's internal footer/logo/fullscreen bar inside the embedded WebGL page
+    frame.addEventListener("load", () => {
+        try {
+            const doc = frame.contentDocument || frame.contentWindow?.document;
+            if (!doc) return;
+
+            // Common Unity WebGL template elements
+            const selectors = [
+                "#unity-footer",
+                "#unity-logo",
+                "#unity-fullscreen-button",
+                ".unity-footer",
+                ".unity-logo",
+                ".unity-fullscreen-button",
+            ];
+
+            selectors.forEach(sel => {
+                doc.querySelectorAll(sel).forEach(el => (el.style.display = "none"));
+            });
+
+            // Sometimes footer space still remains due to layout; remove padding/margins if present
+            const container = doc.querySelector("#unity-container") || doc.body;
+            if (container) {
+                container.style.marginBottom = "0";
+                container.style.paddingBottom = "0";
+            }
+        } catch (e) {
+            // If same-origin access is blocked for any reason, fail silently
+            console.warn("Could not hide Unity footer inside iframe:", e);
+        }
+    });
 
 
     if (fullscreenBtn) {

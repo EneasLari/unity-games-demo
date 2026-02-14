@@ -12,10 +12,13 @@
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
+  overflow-x: hidden; /* prevent tiny horizontal overflow on mobile */
 }
+
 body {
   margin: 0;
   font-family:
@@ -30,11 +33,21 @@ body {
   color: var(--text);
 }
 
+/* Container */
 .wrap {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 18px;
+
+  /* base padding */
+  padding-top: 18px;
+  padding-bottom: 18px;
+
+  /* IMPORTANT: keep left/right symmetric + iOS safe-area aware */
+  padding-left: max(18px, env(safe-area-inset-left));
+  padding-right: max(18px, env(safe-area-inset-right));
 }
+
+/* Topbar */
 .topbar {
   position: sticky;
   top: 0;
@@ -43,11 +56,19 @@ body {
   border-bottom: 1px solid var(--line);
   z-index: 10;
 }
+
+.topbar .wrap {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
 .brand {
   display: flex;
   gap: 14px;
   align-items: center;
 }
+
 .logo {
   width: 44px;
   height: 44px;
@@ -59,11 +80,13 @@ body {
   box-shadow: var(--shadow);
   font-weight: 700;
 }
+
 h1 {
   margin: 0;
   font-size: 20px;
   letter-spacing: 0.2px;
 }
+
 p {
   margin: 4px 0 0;
   color: var(--muted);
@@ -72,11 +95,6 @@ p {
 
 .tools {
   margin-left: auto;
-}
-.topbar .wrap {
-  display: flex;
-  gap: 18px;
-  align-items: center;
 }
 
 .search {
@@ -88,10 +106,47 @@ p {
   color: var(--text);
   outline: none;
 }
+
 .search::placeholder {
   color: rgba(233, 236, 255, 0.55);
 }
 
+/* --- HERO --- */
+.hero {
+  margin: 26px 0 16px;
+  padding: 60px 40px;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: radial-gradient(circle at 20% 30%, rgba(122, 92, 255, 0.3), transparent 40%), radial-gradient(circle at 80% 70%, rgba(255, 92, 196, 0.25), transparent 40%), rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin: 0 0 12px;
+}
+
+.hero p {
+  max-width: 620px;
+  margin: 0 auto 20px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  font-weight: 600;
+}
+
+.game-count {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* --- GRID --- */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -99,19 +154,49 @@ p {
   padding-top: 10px;
 }
 
+/* --- CARDS --- */
 .card {
+  position: relative;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
   box-shadow: var(--shadow);
   transition:
-    transform 0.12s ease,
-    border-color 0.12s ease;
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.5s ease forwards;
+  animation-delay: var(--delay, 0s);
 }
+
 .card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, rgba(122, 92, 255, 0.95), rgba(255, 92, 196, 0.85));
+  padding: 6px 10px;
+  font-size: 11px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
 .thumb {
@@ -122,25 +207,30 @@ p {
   object-fit: cover;
   display: block;
 }
+
 .cardbody {
   padding: 14px;
 }
+
 .title {
   font-weight: 700;
   margin: 0 0 6px;
 }
+
 .desc {
   margin: 0;
   color: var(--muted);
   font-size: 13px;
   min-height: 34px;
 }
+
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 10px;
 }
+
 .tag {
   font-size: 12px;
   padding: 6px 10px;
@@ -149,11 +239,13 @@ p {
   border: 1px solid var(--line);
   color: rgba(233, 236, 255, 0.9);
 }
+
 .actions {
   display: flex;
   gap: 10px;
   margin-top: 12px;
 }
+
 .btn {
   flex: 1;
   text-align: center;
@@ -164,11 +256,13 @@ p {
   color: var(--text);
   background: rgba(255, 255, 255, 0.06);
 }
+
 .btn.primary {
   background: linear-gradient(135deg, rgba(122, 92, 255, 0.55), rgba(255, 92, 196, 0.35));
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+/* --- PLAY PAGE --- */
 .footer-card {
   margin-top: 18px;
   padding: 16px;
@@ -182,6 +276,7 @@ p {
   align-items: center;
   gap: 12px;
 }
+
 .back {
   text-decoration: none;
   color: var(--text);
@@ -190,9 +285,11 @@ p {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.06);
 }
+
 .spacer {
   flex: 1;
 }
+
 .pill {
   text-decoration: none;
   color: var(--text);
@@ -202,17 +299,21 @@ p {
   background: rgba(255, 255, 255, 0.06);
   font-size: 13px;
 }
+
 .btn-pill {
   cursor: pointer;
   font: inherit;
 }
+
 .btn-pill:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
 .playtitle h1 {
   font-size: 18px;
 }
+
 .playtitle p {
   margin-top: 2px;
 }
@@ -224,20 +325,149 @@ p {
   background: rgba(0, 0, 0, 0.25);
   box-shadow: var(--shadow);
 }
+
 .player {
   width: 100%;
   height: min(74vh, 720px);
   border: 0;
   display: block;
 }
+
 .hint {
   color: var(--muted);
   font-size: 13px;
   margin: 10px 2px;
 }
+
 code {
   background: rgba(255, 255, 255, 0.08);
   padding: 2px 6px;
   border-radius: 8px;
   border: 1px solid var(--line);
+}
+
+/* ----------------------------
+   Mobile Optimizations
+---------------------------- */
+@media (max-width: 720px) {
+  /* DO NOT override left/right padding (safe-area). Only adjust top/bottom. */
+  .wrap {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  /* Top bar layout: stack brand + search nicely */
+  .topbar .wrap {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .brand {
+    width: 100%;
+  }
+
+  .tools {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .search {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+
+  /* Hero: less padding and better typography */
+  .hero {
+    padding: 28px 18px;
+    margin: 18px 0 12px;
+    border-radius: 20px;
+  }
+
+  .hero h2 {
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .hero p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  /* Grid: single column */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cardbody {
+    padding: 12px;
+  }
+
+  .btn {
+    padding: 12px 12px;
+    border-radius: 16px;
+  }
+}
+
+/* Small phones (iPhone SE / very narrow) */
+@media (max-width: 380px) {
+  .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
+
+  .tags {
+    gap: 5px;
+  }
+
+  .tag {
+    padding: 5px 9px;
+    font-size: 11px;
+  }
+
+  /* Stack buttons on very small screens */
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Tablets: allow 2 columns nicely */
+@media (min-width: 721px) and (max-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Touch devices: avoid hover “jump” */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+    border-color: var(--line);
+  }
+
+  .btn:active,
+  .back:active,
+  .pill:active {
+    transform: scale(0.98);
+  }
 }
