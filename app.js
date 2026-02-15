@@ -89,7 +89,9 @@ async function initPlay() {
     }
 
     const directUrl = `games/${g.id}/index.html`;
-    if (title) title.textContent = g.title || g.id;
+    const gameTitle = g.title || g.id;
+    if (title) title.textContent = gameTitle;
+    document.title = `Play - ${gameTitle}`;
     if (desc) desc.textContent = g.description || "";
     frame.src = directUrl;
     // Hide Unity's internal footer/logo/fullscreen bar inside the embedded WebGL page

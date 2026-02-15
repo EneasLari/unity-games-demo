@@ -149,7 +149,7 @@ p {
 /* --- GRID --- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 24px;
   padding-top: 10px;
 }
@@ -472,6 +472,13 @@ code {
 @media (min-width: 721px) and (max-width: 980px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop: give thumbnails more height */
+@media (min-width: 981px) {
+  .thumb {
+    aspect-ratio: 16 / 9;
   }
 }
 
