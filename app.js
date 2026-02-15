@@ -110,6 +110,26 @@ async function initPlay() {
                 ".unity-fullscreen-button",
             ];
 
+            // Make Unity canvas responsive (fix 960x600 issue)
+            const cont = doc.querySelector("#unity-container");
+            const canvas = doc.querySelector("#unity-canvas");
+
+            if (cont) {
+                cont.style.width = "100%";
+                cont.style.height = "100%";
+                cont.style.overflow = "hidden"; // ✅ important
+            }
+
+            if (canvas) {
+                // ✅ remove the fixed-size attributes from Unity template
+                canvas.removeAttribute("width");
+                canvas.removeAttribute("height");
+
+                canvas.style.width = "100%";
+                canvas.style.height = "100%";
+                canvas.style.display = "block";
+            }
+
             selectors.forEach(sel => {
                 doc.querySelectorAll(sel).forEach(el => (el.style.display = "none"));
             });
