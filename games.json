@@ -5,5 +5,12 @@
     "description": "Classic Sudoku with clean UI and difficulty selection.",
     "thumb": "games/thumbnails/sudoku.png",
     "tags": ["Puzzle", "Logic"]
+  },
+  {
+    "id": "minespweeper",
+    "title": "Minesweeper",
+    "description": "Classic Minesweeper gameplay with flags and timed runs.",
+    "thumb": "games/thumbnails/minesweeper.png",
+    "tags": ["Puzzle", "Strategy"]
   }
 ]
