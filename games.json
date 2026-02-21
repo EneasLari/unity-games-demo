@@ -12,5 +12,19 @@
     "description": "Classic Minesweeper gameplay with flags and timed runs.",
     "thumb": "games/thumbnails/minesweeper.png",
     "tags": ["Puzzle", "Strategy"]
+  },
+  {
+    "id": "memorycardmatching",
+    "title": "Memory Card Matching",
+    "description": "Match pairs of cards to test and improve your memory.",
+    "thumb": "games/thumbnails/memory-card-matching.png",
+    "tags": ["Memory", "Kids"]
+  },
+  {
+    "id": "nametheanimal",
+    "title": "Name the Animal",
+    "description": "Guess and identify animals from clues and pictures.",
+    "thumb": "games/thumbnails/name-the-animal.png",
+    "tags": ["Quiz", "Kids"]
   }
 ]
