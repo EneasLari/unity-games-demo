@@ -17,14 +17,21 @@
     "id": "memorycardmatching",
     "title": "Memory Card Matching",
     "description": "Match pairs of cards to test and improve your memory.",
-    "thumb": "games/thumbnails/memory-card-matching.png",
+    "thumb": "games/thumbnails/memory-card-matching.webp",
     "tags": ["Memory", "Kids"]
   },
   {
     "id": "nametheanimal",
     "title": "Name the Animal",
     "description": "Guess and identify animals from clues and pictures.",
-    "thumb": "games/thumbnails/name-the-animal.png",
+    "thumb": "games/thumbnails/name-the-animal.webp",
     "tags": ["Quiz", "Kids"]
+  },
+  {
+    "id": "2048",
+    "title": "2048",
+    "description": "Slide numbered tiles to combine them and reach 2048.",
+    "thumb": "games/thumbnails/2048.png",
+    "tags": ["Puzzle", "Strategy"]
   }
 ]
