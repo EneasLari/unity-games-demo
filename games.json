@@ -1,0 +1,44 @@
+[
+  {
+    "id": "sudoku",
+    "title": "Sudoku",
+    "description": "Classic Sudoku with clean UI and difficulty selection.",
+    "thumb": "games/thumbnails/sudoku.png",
+    "tags": ["Puzzle", "Logic"]
+  },
+  {
+    "id": "minespweeper",
+    "title": "Minesweeper",
+    "description": "Classic Minesweeper gameplay with flags and timed runs.",
+    "thumb": "games/thumbnails/minesweeper.png",
+    "tags": ["Puzzle", "Strategy"]
+  },
+  {
+    "id": "memorycardmatching",
+    "title": "Memory Card Matching",
+    "description": "Match pairs of cards to test and improve your memory.",
+    "thumb": "games/thumbnails/memory-card-matching.webp",
+    "tags": ["Memory", "Kids"]
+  },
+  {
+    "id": "nametheanimal",
+    "title": "Name the Animal",
+    "description": "Guess and identify animals from clues and pictures.",
+    "thumb": "games/thumbnails/name-the-animal.webp",
+    "tags": ["Quiz", "Kids"]
+  },
+  {
+    "id": "2048",
+    "title": "2048",
+    "description": "Slide numbered tiles to combine them and reach 2048.",
+    "thumb": "games/thumbnails/2048.png",
+    "tags": ["Puzzle", "Strategy"]
+  },
+  {
+    "id": "connect4",
+    "title": "Connect Four",
+    "description": "Drop discs into the grid and connect four in a row to win.",
+    "thumb": "games/thumbnails/connect-four.png",
+    "tags": ["Strategy", "Board"]
+  }
+]

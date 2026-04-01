@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/iconssmall.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Play — LarixGames</title>
+    <meta name="description" content="Play LarixGames titles directly in your browser." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="play-page">
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="./">
+          <img src="assets/iconsBIG.png" alt="LarixGames logo" class="brand-logo" />
+          <span>LarixGames</span>
+        </a>
+
+        <nav class="nav">
+          <a href="./">All Games</a>
+          <a href="https://larixgames.com" target="_blank" rel="noopener">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell play-layout">
+      <section class="play-top">
+        <div>
+          <p class="eyebrow">Now playing</p>
+          <h1 id="title">Loading game...</h1>
+          <p id="desc" class="hero-text"></p>
+        </div>
+
+        <div class="play-actions">
+          <a class="btn btn-secondary" href="./">Back to library</a>
+          <button class="btn btn-primary" id="fullscreenBtn" type="button">Fullscreen</button>
+        </div>
+      </section>
+
+      <section class="player-card">
+        <iframe id="frame" class="game-frame" title="Game player" allowfullscreen></iframe>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-top">
+        <div class="footer-brand">
+          <span class="brand-dot"></span>
+          <span>LarixGames</span>
+        </div>
+
+        <div class="footer-links">
+          <a href="./">Library</a>
+          <a href="https://larixgames.com" target="_blank" rel="noopener">Main Site</a>
+        </div>
+      </div>
+
+      <div class="shell footer-bottom">
+        <span id="footerYear"></span>
+        <span>Built with Unity WebGL + GitHub Pages</span>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('footerYear').textContent = `© ${new Date().getFullYear()} LarixGames`
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>

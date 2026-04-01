@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/png" href="assets/iconssmall.png" />
+    <title>LarixGames — Games</title>
+    <meta name="description" content="A growing collection of ad-free games. Explore puzzle, word, arcade, and casual games by LarixGames." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="./">
+          <img src="assets/iconsBIG.png" alt="LarixGames logo" class="brand-logo" />
+          <span>LarixGames</span>
+        </a>
+
+        <nav class="nav">
+          <a href="./">Games</a>
+          <a href="https://larixgames.com" target="_blank" rel="noopener">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero hero-index">
+        <div class="hero-copy">
+          <p class="eyebrow">Game library</p>
+          <h1>A growing collection of ad-free games</h1>
+          <p class="hero-text">Explore puzzle, word, arcade, and casual games currently in development, with new titles and updates added over time.</p>
+
+          <div class="hero-actions">
+            <a href="#grid" class="btn btn-primary">Browse games</a>
+          </div>
+
+          <p class="hero-note">No ads. Just games in progress.</p>
+        </div>
+
+        <div class="hero-side">
+          <div class="info-box">
+            <div class="info-label">What you’ll find</div>
+            <div class="chip-list">
+              <span class="chip">Puzzle games</span>
+              <span class="chip">Word games</span>
+              <span class="chip">Memory games</span>
+              <span class="chip">Casual arcade games</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar">
+        <div>
+          <h2 class="section-title">Games</h2>
+          <p class="section-text">Pick a game and play instantly.</p>
+        </div>
+
+        <div class="toolbar-controls">
+          <input id="search" class="search" placeholder="Search games" autocomplete="off" />
+        </div>
+      </section>
+
+      <p class="game-count" id="gameCount"></p>
+
+      <section class="grid" id="grid"></section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-top">
+        <div class="footer-brand">
+          <span class="brand-dot"></span>
+          <span>LarixGames</span>
+        </div>
+
+        <div class="footer-links">
+          <a href="./">Library</a>
+          <a href="https://larixgames.com" target="_blank" rel="noopener">Main Site</a>
+          <a href="https://github.com/EneasLari/unity-games-demo" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="shell footer-bottom">
+        <span id="footerYear"></span>
+        <span>Built with Unity WebGL + GitHub Pages</span>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('footerYear').textContent = `© ${new Date().getFullYear()} LarixGames`
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>
