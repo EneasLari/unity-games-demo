@@ -4,41 +4,57 @@
     "title": "Sudoku",
     "description": "Classic Sudoku with clean UI and difficulty selection.",
     "thumb": "games/thumbnails/sudoku.png",
-    "tags": ["Puzzle", "Logic"]
+    "tags": ["Puzzle", "Logic"],
+    "source": "local"
   },
   {
     "id": "minespweeper",
     "title": "Minesweeper",
     "description": "Classic Minesweeper gameplay with flags and timed runs.",
     "thumb": "games/thumbnails/minesweeper.png",
-    "tags": ["Puzzle", "Strategy"]
+    "tags": ["Puzzle", "Strategy"],
+    "source": "local"
   },
   {
     "id": "memorycardmatching",
     "title": "Memory Card Matching",
     "description": "Match pairs of cards to test and improve your memory.",
     "thumb": "games/thumbnails/memory-card-matching.webp",
-    "tags": ["Memory", "Kids"]
+    "tags": ["Memory", "Kids"],
+    "source": "local"
   },
   {
     "id": "nametheanimal",
     "title": "Name the Animal",
     "description": "Guess and identify animals from clues and pictures.",
     "thumb": "games/thumbnails/name-the-animal.webp",
-    "tags": ["Quiz", "Kids"]
+    "tags": ["Quiz", "Kids"],
+    "source": "local"
   },
   {
     "id": "2048",
     "title": "2048",
     "description": "Slide numbered tiles to combine them and reach 2048.",
     "thumb": "games/thumbnails/2048.png",
-    "tags": ["Puzzle", "Strategy"]
+    "tags": ["Puzzle", "Strategy"],
+    "source": "local"
   },
   {
     "id": "connect4",
     "title": "Connect Four",
     "description": "Drop discs into the grid and connect four in a row to win.",
     "thumb": "games/thumbnails/connect-four.png",
-    "tags": ["Strategy", "Board"]
+    "tags": ["Strategy", "Board"],
+    "source": "local"
+  },
+  {
+    "id": "cosmicmatch",
+    "title": "Cosmic Match",
+    "description": "Match colorful cosmic tiles and complete target-based levels.",
+    "thumb": "games/thumbnails/cosmicmatch.png",
+    "tags": ["Puzzle", "Match-3"],
+    "source": "itch",
+    "embedUrl": "https://itch.io/embed-upload/17018192?color=323131",
+    "directUrl": "https://larixgames.itch.io/cosmic-match"
   }
 ]

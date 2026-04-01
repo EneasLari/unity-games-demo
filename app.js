@@ -20,7 +20,11 @@ function escapeHtml(s) {
 
 function makeCard(g, i = 0) {
     const playUrl = `play.html?game=${encodeURIComponent(g.id)}`;
-    const directUrl = `games/${g.id}/index.html`;
+
+    const directUrl =
+        g.source === "itch"
+            ? (g.directUrl || g.embedUrl || "#")
+            : (g.directUrl || `games/${g.id}/index.html`);
 
     const tags = (g.tags || [])
         .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
@@ -99,71 +103,83 @@ async function initPlay() {
         return;
     }
 
-    const directUrl = `games/${g.id}/index.html`;
+    const isItch = g.source === "itch";
     const gameTitle = g.title || g.id;
+
+    const frameUrl = isItch
+        ? g.embedUrl
+        : (g.directUrl || `games/${g.id}/index.html`);
 
     if (title) title.textContent = gameTitle;
     if (desc) desc.textContent = g.description || "";
     document.title = `${gameTitle} — LarixGames`;
 
-    frame.src = directUrl;
+    if (!frameUrl) {
+        if (title) title.textContent = "Game URL missing";
+        return;
+    }
 
-    frame.addEventListener("load", () => {
-        try {
-            const doc = frame.contentDocument || frame.contentWindow?.document;
-            if (!doc) return;
+    frame.src = frameUrl;
 
-            const selectors = [
-                "#unity-footer",
-                "#unity-logo",
-                "#unity-fullscreen-button",
-                ".unity-footer",
-                ".unity-logo",
-                ".unity-fullscreen-button",
-            ];
+    // Only try to modify iframe internals for same-origin local games
+    if (!isItch) {
+        frame.addEventListener("load", () => {
+            try {
+                const doc = frame.contentDocument || frame.contentWindow?.document;
+                if (!doc) return;
 
-            const cont = doc.querySelector("#unity-container");
-            const canvas = doc.querySelector("#unity-canvas");
+                const selectors = [
+                    "#unity-footer",
+                    "#unity-logo",
+                    "#unity-fullscreen-button",
+                    ".unity-footer",
+                    ".unity-logo",
+                    ".unity-fullscreen-button",
+                ];
 
-            if (cont) {
-                cont.style.width = "100%";
-                cont.style.height = "100%";
-                cont.style.overflow = "hidden";
-                cont.style.margin = "0";
-                cont.style.padding = "0";
-            }
+                const cont = doc.querySelector("#unity-container");
+                const canvas = doc.querySelector("#unity-canvas");
 
-            if (canvas) {
-                canvas.removeAttribute("width");
-                canvas.removeAttribute("height");
-                canvas.style.width = "100%";
-                canvas.style.height = "100%";
-                canvas.style.display = "block";
-            }
+                if (cont) {
+                    cont.style.width = "100%";
+                    cont.style.height = "100%";
+                    cont.style.overflow = "hidden";
+                    cont.style.margin = "0";
+                    cont.style.padding = "0";
+                }
 
-            selectors.forEach((sel) => {
-                doc.querySelectorAll(sel).forEach((el) => {
-                    el.style.display = "none";
+                if (canvas) {
+                    canvas.removeAttribute("width");
+                    canvas.removeAttribute("height");
+                    canvas.style.width = "100%";
+                    canvas.style.height = "100%";
+                    canvas.style.display = "block";
+                }
+
+                selectors.forEach((sel) => {
+                    doc.querySelectorAll(sel).forEach((el) => {
+                        el.style.display = "none";
+                    });
                 });
-            });
 
-            const body = doc.body;
-            if (body) {
-                body.style.margin = "0";
-                body.style.padding = "0";
-                body.style.overflow = "hidden";
-                body.style.background = "#000";
-            }
+                const body = doc.body;
+                if (body) {
+                    body.style.margin = "0";
+                    body.style.padding = "0";
+                    body.style.overflow = "hidden";
+                    body.style.background = "#000";
+                }
 
-            const container = doc.querySelector("#unity-container") || doc.body;
-            if (container) {
-                container.style.marginBottom = "0";
-                container.style.paddingBottom = "0";
+                const container = doc.querySelector("#unity-container") || doc.body;
+                if (container) {
+                    container.style.marginBottom = "0";
+                    container.style.paddingBottom = "0";
+                }
+            } catch (e) {
+                console.warn("Could not modify iframe contents:", e);
             }
-        } catch (e) {
-            console.warn("Could not modify iframe contents:", e);
-        }
-    });
+        });
+    }
 
     if (fullscreenBtn) {
         const canFullscreen =
