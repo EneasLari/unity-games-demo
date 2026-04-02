@@ -56,5 +56,13 @@
     "source": "itch",
     "embedUrl": "https://itch.io/embed-upload/17018192?color=323131",
     "directUrl": "https://larixgames.itch.io/cosmic-match"
+  },
+  {
+    "id": "braingrid",
+    "title": "World Wars",
+    "description": "Word search game with global themes and hidden words.",
+    "thumb": "games/thumbnails/worldwars.png",
+    "tags": ["Word Search", "Puzzle"],
+    "source": "local"
   }
 ]
