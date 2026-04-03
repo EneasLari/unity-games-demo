@@ -64,5 +64,12 @@
     "thumb": "games/thumbnails/worldwars.png",
     "tags": ["Word Search", "Puzzle"],
     "source": "local"
+  },
+  {
+    "id": "crossword",
+    "title": "Crossword Puzzle",
+    "description": "Classic crossword with themed clues and interactive solving.",
+    "tags": ["Puzzle", "Word"],
+    "source": "local"
   }
 ]
